@@ -11,6 +11,7 @@ if (!process.env.PORT) {
 const startServer = async () => {
   try {
     await connectToDb();
+   
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
