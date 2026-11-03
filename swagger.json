@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Books API",
+    "version": "1.0.0",
+    "description": "A simple API for working with books"
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Current server"
+    }
+  ],
+  "paths": {
+    "/books": {
+      "get": {
+        "summary": "Retrieve all books",
+        "tags": [
+          "Books"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of books",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "summary": "Retrieve a book by ID",
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "The ID of the book to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested book",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Book not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
