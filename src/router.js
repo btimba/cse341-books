@@ -4,7 +4,7 @@ import { getBooksHandler, getBookByIdHandler } from './controllers/books.js';
 const router = express.Router();
 
 /**
- * @swagger
+ * @openapi
  * /books:
  *   get:
  *     summary: Retrieve all books
@@ -33,7 +33,7 @@ const router = express.Router();
 router.get('/books', getBooksHandler);
 
 /**
- * @swagger
+ * @openapi
  * /books/{id}:
  *   get:
  *     summary: Retrieve a book by ID
