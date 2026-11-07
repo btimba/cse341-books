@@ -23,7 +23,7 @@ const validateBookFields = (body, requiredFields) => {
   }
 
   const allowedFields = new Set(['id', 'authorId', 'title', 'publicationDate']);
-  const unknownField = Object.keys(body).find((field) => !allowedFields.has(field));
+  const unknownField = Object.keys(body).find((field) => {return !allowedFields.has(field)});
   if (unknownField) return [`unknown field: ${unknownField}`];
 
   for (const field of requiredFields) {
