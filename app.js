@@ -9,6 +9,15 @@ const app = express();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
+app.use((error, req, res, next) => {
+    if (error instanceof SyntaxError && error.status === 400 && 'body' in error) {
+        return res.status(400).json({
+            error: 'Validation failed',
+            details: ['request body must contain valid JSON'],
+        });
+    }
+    return next(error);
+});
 app.use(router);
 
 
